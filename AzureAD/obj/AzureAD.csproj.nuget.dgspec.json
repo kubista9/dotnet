@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/jakubkuka/Desktop/school/5semester/UCB/HelloWorldApi/HelloWorldApi.csproj": {}
+    "/Users/jakubkuka/Desktop/school/5semester/UCB/AzureAD/AzureAD.csproj": {}
   },
   "projects": {
-    "/Users/jakubkuka/Desktop/school/5semester/UCB/HelloWorldApi/HelloWorldApi.csproj": {
+    "/Users/jakubkuka/Desktop/school/5semester/UCB/AzureAD/AzureAD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/jakubkuka/Desktop/school/5semester/UCB/HelloWorldApi/HelloWorldApi.csproj",
-        "projectName": "HelloWorldApi",
-        "projectPath": "/Users/jakubkuka/Desktop/school/5semester/UCB/HelloWorldApi/HelloWorldApi.csproj",
+        "projectUniqueName": "/Users/jakubkuka/Desktop/school/5semester/UCB/AzureAD/AzureAD.csproj",
+        "projectName": "AzureAD",
+        "projectPath": "/Users/jakubkuka/Desktop/school/5semester/UCB/AzureAD/AzureAD.csproj",
         "packagesPath": "/Users/jakubkuka/.nuget/packages/",
-        "outputPath": "/Users/jakubkuka/Desktop/school/5semester/UCB/HelloWorldApi/obj/",
+        "outputPath": "/Users/jakubkuka/Desktop/school/5semester/UCB/AzureAD/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/jakubkuka/.nuget/NuGet/NuGet.Config"
