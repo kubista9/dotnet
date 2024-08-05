@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "szaKb5/CvbeVfgbA4Hazb3aPHlYwnF1S9FF3DhhTNiM=",
+  "Source": "AzureAD",
+  "BasePath": "_content/AzureAD",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
