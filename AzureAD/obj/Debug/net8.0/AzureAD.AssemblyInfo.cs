@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AzureAD")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d019a53ce538ffb5215897659e66686a61e1fae4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f45feea3ecc940eec28f55665a5ac0bc68bd763")]
 [assembly: System.Reflection.AssemblyProductAttribute("AzureAD")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AzureAD")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
