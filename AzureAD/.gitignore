@@ -1,0 +1,74 @@
+# Ignore the appsettings.json file
+appsettings.json
+
+# Rider-specific files
+.idea/
+.idea_modules/
+*.sln.iml
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/shelf/
+.idea/**/contentModel.xml
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+.idea/**/dataSources.local/
+
+# .NET-specific files
+bin/
+obj/
+
+# Visual Studio
+.vscode/
+.vs/
+.vscode/**
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Entity Framework Core
+Migrations/
+
+# Logs
+*.log
+logs/
+
+# Add here any other specific files or directories you want to ignore
+
+# Rider's folders and files
+.idea/
+.idea_modules/
+
+# Rider's specific folders
+.idea/shelf/
+.idea/workspace.xml
+.idea/dataSources/
+.idea/dataSources.ids
+.idea/dataSources.local.xml
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
+.idea/dbnavigator.xml
+
+# Rider's specific files
+.idea/**/shelf/
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml

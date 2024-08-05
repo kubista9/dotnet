@@ -11,8 +11,4 @@
     <PackageReference Include="Microsoft.Identity.Client" Version="4.62.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
-
-
-
-
 </Project>
