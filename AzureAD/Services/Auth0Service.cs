@@ -22,7 +22,7 @@ namespace AzureAD.Services
 			{
 				IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create(_options.ClientId)
 					.WithClientSecret(_options.ClientSecret)
-					.WithAuthority(new Uri(_authority))
+					.WithAuthority(new Uri(_options.Authority))
 					.Build();
 
 				var scopes = new string[] { _options.Scope };
