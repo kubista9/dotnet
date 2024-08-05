@@ -6,17 +6,17 @@ namespace AzureAD.Controllers;
 
 public class TokenController : ControllerBase
 {
-	private readonly IAuth0Service _authService;
+	private readonly IAuth0Service _auth0Service;
 
 	public TokenController(IAuth0Service auth0Service)
 	{
-		_authService = auth0Service;
+		_auth0Service = auth0Service;
 	}
 
-	[HttpGet]
-	public async Task<Token> GetToken()
+	[HttpGet("token")]
+	public async Task<IActionResult> GetToken()
 	{
-		var token = await _authService.GetTokenAsync();
-		return token;
+		var token = await _auth0Service.GetTokenAsync();
+		return Ok(token);
 	}
 }

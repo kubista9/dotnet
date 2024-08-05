@@ -32,3 +32,5 @@
 /Users/jakubkuka/Desktop/school/5semester/UCB/AzureAD/obj/Debug/net8.0/AzureAD.pdb
 /Users/jakubkuka/Desktop/school/5semester/UCB/AzureAD/obj/Debug/net8.0/AzureAD.genruntimeconfig.cache
 /Users/jakubkuka/Desktop/school/5semester/UCB/AzureAD/obj/Debug/net8.0/ref/AzureAD.dll
+/Users/jakubkuka/Desktop/school/5semester/UCB/AzureAD/bin/Debug/net8.0/Microsoft.Identity.Client.dll
+/Users/jakubkuka/Desktop/school/5semester/UCB/AzureAD/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
