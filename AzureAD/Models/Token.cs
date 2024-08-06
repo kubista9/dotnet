@@ -14,4 +14,8 @@ public record Token
 
 	[JsonPropertyName("expires_in")]
 	public double ExpiresIn { get; set; } = default!;
+	public DateTime ExpirationTime { get; set; }    //=> DateTime.UtcNow.AddSeconds(ExpiresIn);
+
+	[JsonPropertyName("refresh_token")]
+	public string RefreshToken { get; set; } = default!;
 }
