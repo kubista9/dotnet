@@ -4,6 +4,7 @@ using AzureAD.Configs;
 using AzureAD.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.Identity.Client;
+using Polly;
 
 namespace AzureAD.Services
 {
@@ -18,7 +19,13 @@ namespace AzureAD.Services
 
 		public async Task<Token> GetTokenAsync()
 		{
-			try
+			// Define Polly retry policy
+			var retryPolicy = Policy.Handle<Exception>(ex =>
+					ex is TimeoutException || ex is HttpRequestException)
+				.WaitAndRetryAsync(3, retryAttempt =>
+					TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))); // Exponential backoff
+
+			return await retryPolicy.ExecuteAsync(async () =>
 			{
 				IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create(_options.ClientId)
 					.WithClientSecret(_options.ClientSecret)
@@ -35,12 +42,7 @@ namespace AzureAD.Services
 					AccessToken = result.AccessToken,
 					ExpiresIn = result.ExpiresOn.UtcDateTime.Subtract(DateTime.UtcNow).TotalSeconds
 				};
-			}
-			catch (Exception ex)
-			{
-				// Handle exceptions
-				throw new Exception("Failed to acquire token", ex);
-			}
+			});
 		}
 	}
 }
