@@ -35,7 +35,7 @@ public class TokenService : ITokenService
 		*/
 	}
 
-	public async Task<Token> RefreshTokenAsync()
+	private async Task<Token> RefreshTokenAsync()
 	{
 		var token = await _auth0Service.GetTokenFromAzureAd();
 		if (token != Token.Empty)
