@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using AzureAD.Configs;
 using AzureAD.Models;
 using Microsoft.Extensions.Options;
