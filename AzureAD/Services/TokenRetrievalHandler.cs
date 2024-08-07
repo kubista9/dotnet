@@ -4,12 +4,12 @@ using AzureAD.Models;
 
 namespace AzureAD.Services;
 
-public class TokenHandler : DelegatingHandler
+public class TokenRetrievalHandler : DelegatingHandler
 {
 	private readonly ITokenService _tokenService;
 	private const string TokenRetrieval = nameof(TokenRetrieval);
 	private const string TokenKey = nameof(TokenKey);
-	public TokenHandler(ITokenService tokenService)
+	public TokenRetrievalHandler(ITokenService tokenService)
 	{
 		_tokenService = tokenService;
 	}

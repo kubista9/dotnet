@@ -3,7 +3,6 @@ using AzureAD.Models;
 using AzureAD.Policies;
 using Microsoft.Extensions.Options;
 using Microsoft.Identity.Client;
-using Polly;
 
 namespace AzureAD.Services
 {
