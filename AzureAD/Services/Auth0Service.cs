@@ -16,7 +16,7 @@ namespace AzureAD.Services
 			_options = options.Value;
 		}
 
-		public async Task<Token> GetTokenAsync()
+		public async Task<Token> GetTokenFromAzureAd()
 		{
 			/*
 			// Defines Polly retry policy

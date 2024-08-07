@@ -13,6 +13,8 @@ builder.Services.Configure<AzureAdOptions>(builder.Configuration.GetSection("Azu
 
 // Register Auth0Service with DI
 builder.Services.AddScoped<IAuth0Service, Auth0Service>();
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 

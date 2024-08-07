@@ -4,6 +4,6 @@ namespace AzureAD.Services;
 
 public interface ITokenService
 {
-	Task<Token> GetTokenAsync();
+	Task<Token> GetTokenFromCacheAsync();
 	Task<Token> RefreshTokenAsync();
 }

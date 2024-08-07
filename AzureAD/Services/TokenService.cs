@@ -3,27 +3,27 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace AzureAD.Services;
 
-public class TokenService
+public class TokenService : ITokenService
 {
 	private readonly IMemoryCache _memoryCache;
-	private readonly IAuth0Service _authService;
+	private readonly IAuth0Service _auth0Service;
 	private const string CacheKey = "AccessToken";
 	private readonly TimeSpan _cacheDuration = TimeSpan.FromMinutes(5); // Adjust as needed
 
-	public TokenService(IMemoryCache memoryCache, IAuth0Service authService)
+	public TokenService(IMemoryCache memoryCache, IAuth0Service auth0Service)
 	{
 		_memoryCache = memoryCache;
-		_authService = authService;
+		_auth0Service = auth0Service;
 	}
 
-	public async Task<Token> GetTokenAsync()
+	public async Task<Token> GetTokenFromCacheAsync()
 	{
 		if (_memoryCache.TryGetValue(CacheKey, out Token? cachedToken) && cachedToken?.ExpirationTime > DateTime.UtcNow)
 		{
 			return cachedToken;
 		}
 
-		var newToken = await _authService.GetTokenAsync();
+		var newToken = await _auth0Service.GetTokenFromAzureAd();
 		_memoryCache.Set(CacheKey, new Token
 		{
 			AccessToken = newToken.AccessToken,
@@ -34,7 +34,7 @@ public class TokenService
 
 	public async Task<Token> RefreshTokenAsync()
 	{
-		var token = await _authService.GetTokenAsync();
+		var token = await _auth0Service.GetTokenFromAzureAd();
 		if (token != Token.Empty)
 		{
 			var expiresIn = token.ExpiresIn > 0 ? token.ExpiresIn - 10 : token.ExpiresIn;

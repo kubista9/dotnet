@@ -18,7 +18,7 @@ public class TokenHandler : DelegatingHandler
 	{
 		if (!request.Properties.TryGetValue(TokenRetrieval, out var context))
 		{
-			context = new Context(TokenRetrieval, new Dictionary<string, object> { { TokenKey, await _tokenService.GetTokenAsync()}});
+			context = new Context(TokenRetrieval, new Dictionary<string, object> { { TokenKey, await _tokenService.GetTokenFromCacheAsync()}});
 			request.Properties[TokenRetrieval] = context;
 		}
 

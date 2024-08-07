@@ -4,5 +4,5 @@ namespace AzureAD.Services;
 
 public interface IAuth0Service
 {
-	Task<Token> GetTokenAsync();
+	Task<Token> GetTokenFromAzureAd();
 }
