@@ -17,7 +17,7 @@ namespace AzureAD.Services
 
 		public async Task<Token> GetTokenAsync()
 		{
-			// Define Polly retry policy
+			// Defines Polly retry policy
 			var retryPolicy = Policy.Handle<Exception>(ex =>
 					ex is TimeoutException || ex is HttpRequestException)
 				.WaitAndRetryAsync(3, retryAttempt =>

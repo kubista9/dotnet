@@ -9,9 +9,9 @@ public class TokenHandler : DelegatingHandler
 	private readonly ITokenService _tokenService;
 	private const string TokenRetrieval = nameof(TokenRetrieval);
 	private const string TokenKey = nameof(TokenKey);
-	public TokenHandler(ITokenService service)
+	public TokenHandler(ITokenService tokenService)
 	{
-		_tokenService = service;
+		_tokenService = tokenService;
 	}
 
 	protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)

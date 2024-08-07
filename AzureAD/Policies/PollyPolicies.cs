@@ -6,6 +6,7 @@ namespace AzureAD.Policies;
 
 public static class PollyPolicies
 {
+	private static ITokenService _tokenService;
 
 	public static async Task<HttpResponseMessage> ExecuteAsync(Func<CancellationToken, Task<HttpResponseMessage>> execution, CancellationToken cancellationToken)
 	{
