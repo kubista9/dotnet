@@ -18,14 +18,6 @@ namespace AzureAD.Services
 
 		public async Task<Token> GetTokenFromAzureAd()
 		{
-			/*
-			// Defines Polly retry policy
-			var retryPolicy = Policy.Handle<Exception>(ex =>
-					ex is TimeoutException || ex is HttpRequestException)
-				.WaitAndRetryAsync(3, retryAttempt =>
-					TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))); // Exponential backoff
-			*/
-
 			return await PollyPolicies.RetryPolicy.ExecuteAsync(async () =>
 			{
 				IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create(_options.ClientId)

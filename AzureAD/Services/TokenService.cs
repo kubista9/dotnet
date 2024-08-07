@@ -8,7 +8,6 @@ public class TokenService : ITokenService
 	private readonly IMemoryCache _memoryCache;
 	private readonly IAuth0Service _auth0Service;
 	private const string CacheKey = "AccessToken";
-	private readonly TimeSpan _cacheDuration = TimeSpan.FromMinutes(5); // Adjust as needed
 
 	public TokenService(IMemoryCache memoryCache, IAuth0Service auth0Service)
 	{
@@ -23,6 +22,9 @@ public class TokenService : ITokenService
 			return cachedToken;
 		}
 
+		var refreshedToken = await RefreshTokenAsync();
+		return refreshedToken;
+		/*
 		var newToken = await _auth0Service.GetTokenFromAzureAd();
 		_memoryCache.Set(CacheKey, new Token
 		{
@@ -30,6 +32,7 @@ public class TokenService : ITokenService
 			ExpirationTime = DateTime.UtcNow.AddSeconds(newToken.ExpiresIn)
 		}, _cacheDuration);
 		return newToken;
+		*/
 	}
 
 	public async Task<Token> RefreshTokenAsync()
