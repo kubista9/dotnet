@@ -1,5 +1,6 @@
 using AzureAD.Configs;
 using AzureAD.Models;
+using AzureAD.Policies;
 using Microsoft.Extensions.Options;
 using Microsoft.Identity.Client;
 using Polly;
@@ -17,13 +18,15 @@ namespace AzureAD.Services
 
 		public async Task<Token> GetTokenAsync()
 		{
+			/*
 			// Defines Polly retry policy
 			var retryPolicy = Policy.Handle<Exception>(ex =>
 					ex is TimeoutException || ex is HttpRequestException)
 				.WaitAndRetryAsync(3, retryAttempt =>
 					TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))); // Exponential backoff
+			*/
 
-			return await retryPolicy.ExecuteAsync(async () =>
+			return await PollyPolicies.RetryPolicy.ExecuteAsync(async () =>
 			{
 				IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create(_options.ClientId)
 					.WithClientSecret(_options.ClientSecret)
