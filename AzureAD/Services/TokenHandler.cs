@@ -16,14 +16,13 @@ public class TokenHandler : DelegatingHandler
 
 	protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
 	{
-		var context = request.GetPolicyExecutionContext();
-		if (context.Count == 0)
+		if (!request.Properties.TryGetValue(TokenRetrieval, out var context))
 		{
 			context = new Context(TokenRetrieval, new Dictionary<string, object> { { TokenKey, await _tokenService.GetTokenAsync()}});
-			request.SetPolicyExecutionContext(context);
+			request.Properties[TokenRetrieval] = context;
 		}
 
-		var token = (Token)context[TokenKey];
+		var token = (Token)((Context)context)[TokenKey];
 
 		if (token != Token.Empty)
 			request.Headers.Authorization = new AuthenticationHeaderValue(token.Scheme, token.AccessToken);
