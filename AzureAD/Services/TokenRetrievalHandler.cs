@@ -1,6 +1,7 @@
 using Polly;
 using System.Net.Http.Headers;
 using AzureAD.Models;
+using AzureAD.Policies;
 
 namespace AzureAD.Services;
 
@@ -14,7 +15,7 @@ public class TokenRetrievalHandler : DelegatingHandler
 		_tokenService = tokenService;
 	}
 
-	protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+	protected async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken, string url)
 	{
 		if (!request.Properties.TryGetValue(TokenRetrieval, out var context))
 		{
@@ -27,6 +28,12 @@ public class TokenRetrievalHandler : DelegatingHandler
 		if (token != Token.Empty)
 			request.Headers.Authorization = new AuthenticationHeaderValue(token.Scheme, token.AccessToken);
 
-		return await base.SendAsync(request, cancellationToken);
+		//return await base.SendAsync(request, cancellationToken);
+
+		return await PollyPolicies.RetryPolicy.ExecuteAsync(async () =>
+		{
+			var httpClient = new HttpClient();
+			return await httpClient.GetAsync(url, cancellationToken);
+		});
 	}
 }

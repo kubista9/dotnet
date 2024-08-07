@@ -1,7 +1,5 @@
 using System.Net;
-using AzureAD.Services;
 using Polly;
-using Polly.CircuitBreaker;
 using Polly.Retry;
 
 namespace AzureAD.Policies;
