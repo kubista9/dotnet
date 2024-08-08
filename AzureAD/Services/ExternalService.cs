@@ -1,3 +1,7 @@
+using System.Text.Json;
+using System.Web;
+using AzureAD.Policies;
+
 namespace AzureAD.Services;
 
 public class ExternalService<T> : IExternalService<T>
@@ -10,13 +14,28 @@ public class ExternalService<T> : IExternalService<T>
 		_httpClient = httpClient;
 		_tokenService = tokenService;
 	}
-	public Task<T> GetAsync(string endpoint, Dictionary<string, string> queryParameters)
+	public async Task<T> GetAsync(string endpoint, Dictionary<string, string>? queryParameters)
 	{
-		throw new NotImplementedException();
-	}
+		var builder = new UriBuilder(endpoint);
 
-	public Task<T> PostAsync<TRequest>(string endpoint, TRequest data, Dictionary<string, string> header)
-	{
-		throw new NotImplementedException();
+		if (queryParameters != null)
+		{
+			var query = HttpUtility.ParseQueryString(string.Empty);
+			foreach (var parameter in queryParameters)
+			{
+				query[parameter.Key] = parameter.Value;
+			}
+			builder.Query = query.ToString();
+		}
+
+		var request = new HttpRequestMessage(HttpMethod.Get, builder.Uri);
+
+		using (var response = await _httpClient.SendAsync(request))
+		{
+			response.EnsureSuccessStatusCode();
+			var content = await response.Content.ReadAsStringAsync();
+
+			return JsonSerializer.Deserialize<T>(content);
+		}
 	}
 }
