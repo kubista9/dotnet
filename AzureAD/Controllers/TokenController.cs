@@ -19,21 +19,47 @@ public class TokenController : ControllerBase
 	[HttpGet("tokenFromAzure")]
 	public async Task<IActionResult> GetTokenFromAzureAd()
 	{
-		var token = await _auth0Service.GetTokenFromAzureAd();
-		return Ok(token);
+		try
+		{
+			var token = await _auth0Service.GetTokenFromAzureAd();
+			return Ok(token);
+		}
+		catch (Exception ex)
+		{
+			return StatusCode(500, $"Error retrieving token from Azure AD: {ex.Message}");
+		}
 	}
 
 	[HttpGet("tokenFromCache")]
 	public async Task<IActionResult> GetTokenFromCache()
 	{
-		var token = await _tokenService.GetTokenFromCacheAsync();
-		return Ok(token);
+		try
+		{
+			var token = await _tokenService.GetTokenFromCacheAsync();
+			return Ok(token);
+		}
+		catch (Exception ex)
+		{
+			return StatusCode(500, $"Error retrieving token from cache: {ex.Message}");
+		}
 	}
 
 	[HttpGet("data/{url}")]
 	public async Task<IActionResult> GetDataFromUrl(string url, Dictionary<string, string>? queryParameters)
 	{
-		var data = await _externalService.GetAsync(url, queryParameters);
-		return Ok(data);
+		if (string.IsNullOrEmpty(url))
+		{
+			return BadRequest("Please provide some URL.");
+		}
+
+		try
+		{
+			var data = await _externalService.GetAsync(url, queryParameters);
+			return Ok(data);
+		}
+		catch (Exception ex)
+		{
+			return StatusCode(500, $"Error retrieving data from URL: {ex.Message}");
+		}
 	}
 }
