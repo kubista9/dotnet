@@ -11,6 +11,9 @@ builder.Services.Configure<AzureAdOptions>(builder.Configuration.GetSection("Azu
 
 builder.Services.AddScoped<IAuth0Service, Auth0Service>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IExternalService<string>, ExternalService<string>>();
+builder.Services.AddHttpClient<string>();
+
 builder.Services.AddMemoryCache();
 
 var app = builder.Build();
