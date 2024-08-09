@@ -13,7 +13,6 @@ builder.Services.AddScoped<IAuth0Service, Auth0Service>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IExternalService<string>, ExternalService<string>>();
 builder.Services.AddHttpClient<string>();
-
 builder.Services.AddMemoryCache();
 
 var app = builder.Build();
@@ -24,6 +23,14 @@ if (app.Environment.IsDevelopment())
 	app.UseSwagger();
 	app.UseSwaggerUI();
 }
+
+
+//app.UseCors(builder =>
+//{
+//	builder.WithOrigins("https://www.npoint.io/") // Replace with allowed origin(s)
+//		.AllowAnyMethod()
+//		.AllowAnyHeader();
+//});
 
 app.UseHttpsRedirection();
 
