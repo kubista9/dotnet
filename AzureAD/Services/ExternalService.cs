@@ -7,12 +7,12 @@ namespace AzureAD.Services;
 public class ExternalService<T> : IExternalService<T>
 {
 	private readonly HttpClient _httpClient;
-	private readonly ITokenService _tokenService;
+	private readonly TokenRetrievalHandler _tokenRetrievalHandler;
 
-	public ExternalService(HttpClient httpClient, ITokenService tokenService)
+	public ExternalService(HttpClient httpClient, TokenRetrievalHandler tokenRetrievalHandler)
 	{
 		_httpClient = httpClient;
-		_tokenService = tokenService;
+		_tokenRetrievalHandler = tokenRetrievalHandler;
 	}
 	public async Task<T> GetAsync(string endpoint, Dictionary<string, string>? queryParameters)
 	{
