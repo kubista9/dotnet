@@ -1,8 +1,5 @@
-This code implements a .NET Core API that can be used to retrieve data from external services.
-The API uses Azure Active Directory (AAD) for authentication.
+# Azure AD is a .NET Core Web api project used for retrieving, storing and forwarding an Access token
 
-What is AzureAD?
+## Project has Azure AD integration, caching & uses Polly for resilience
 
-AzureAD is a .Net Core Web Api project that provides 3 services:
-- OAuthService to get an Access Token from AzureAD
 -
