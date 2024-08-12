@@ -1,5 +1,13 @@
-# Azure AD is a .NET Core Web api project used for retrieving, storing and forwarding an Access token
+# Azure AD is a C# .NET Core Web Api project used for retrieving, storing and forwarding an Access token
 
 ## Project has Azure AD integration, caching & uses Polly for resilience
 
--
+This project was used for learning about JWT, APIs, Polly, C# .NET, Cache and Swagger. It allows you to:
+- Add an external service to interact with the system
+- Retrieve the JWT token from a cache
+- Get a JWT token from Azure AD
+- Store a JWT token in a cache
+
+![ClassDiagram.drawio.svg](..%2F..%2F..%2F..%2FClassDiagram.drawio.svg)
+
+
