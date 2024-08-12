@@ -1,6 +1,6 @@
 using AzureAD.Models;
 
-namespace AzureAD.Services.TokenService;
+namespace AzureAD.Services;
 
 public interface ITokenService
 {
