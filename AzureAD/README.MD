@@ -8,6 +8,6 @@ This project was used for learning about JWT, APIs, Polly, C# .NET, Cache and Sw
 - Get a JWT token from Azure AD
 - Store a JWT token in a cache
 
-![ClassDiagram.drawio.svg](..%2F..%2F..%2F..%2FClassDiagram.drawio.svg)
+![Class diagram](ClassDiagram.drawio.svg)
 
 
