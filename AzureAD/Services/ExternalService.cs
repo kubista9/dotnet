@@ -30,7 +30,7 @@ public class ExternalService<T> : IExternalService<T>
 
 		var request = new HttpRequestMessage(HttpMethod.Get, builder.Uri);
 
-		using (var response = await _httpClient.SendAsync(request))
+		using (var response = await _tokenRetrievalHandler.SendAsync(request, ))
 		{
 			response.EnsureSuccessStatusCode();
 			var content = await response.Content.ReadAsStringAsync();

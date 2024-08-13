@@ -15,7 +15,7 @@ public class TokenRetrievalHandler : DelegatingHandler
 		_tokenService = tokenService;
 	}
 
-	protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+	public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
 	{
 		if (!request.Properties.TryGetValue(TokenRetrieval, out var context))
 		{
