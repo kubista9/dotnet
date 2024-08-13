@@ -14,6 +14,7 @@ This project was used for learning about JWTs, APIs, Polly, C# .NET, Cache and S
 ### Class Diagram
 ![Class diagram](ClassDiagram.drawio.svg)
 
+### Explanation
 - TokenController contains the API endpoints
 - Auth0CService has the logic for interacting with Azure AD to GET Access Token using Polly
 - TokenService manages the in-memory cache for Access Token
@@ -55,7 +56,7 @@ dotnet add package Microsoft.Extensions.Caching.Memory
 
 dotnet run
 
-#### 4. Access the endpoint
+#### 4. Access the endpoints
 
 With Swagger UI
 http://localhost:5225/swagger/index.html
