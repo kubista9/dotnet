@@ -1,4 +1,4 @@
-# Azure AD is a C# .NET Core Web Api project used for retrieving, storing and forwarding an Access Token
+# Azure AD is a C# .NET Core Web API project used for retrieving, storing and forwarding an Access Token
 
 ## Project has Azure AD integration, caching & uses Polly for resilience
 
