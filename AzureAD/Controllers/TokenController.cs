@@ -45,7 +45,7 @@ public class TokenController : ControllerBase
 	}
 
 	[HttpGet("data/{url}")]
-	public async Task<IActionResult> GetDataFromUrl(string url, Dictionary<string, string>? queryParameters)
+	public async Task<IActionResult> GetDataFromUrl(string url, Dictionary<string, string> queryParameters)
 	{
 		if (string.IsNullOrEmpty(url))
 		{

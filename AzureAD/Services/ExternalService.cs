@@ -14,7 +14,7 @@ public class ExternalService<T> : IExternalService<T>
 		_httpClient = httpClient;
 		_tokenRetrievalHandler = tokenRetrievalHandler;
 	}
-	public async Task<T> GetAsync(string endpoint, Dictionary<string, string>? queryParameters)
+	public async Task<T?> GetAsync(string endpoint, Dictionary<string, string>? queryParameters)
 	{
 		var builder = new UriBuilder(endpoint);
 
@@ -29,13 +29,12 @@ public class ExternalService<T> : IExternalService<T>
 		}
 
 		var request = new HttpRequestMessage(HttpMethod.Get, builder.Uri);
+		var cancellationToken = new CancellationToken();
 
-		using (var response = await _tokenRetrievalHandler.SendAsync(request, ))
-		{
-			response.EnsureSuccessStatusCode();
-			var content = await response.Content.ReadAsStringAsync();
+		var response = await _tokenRetrievalHandler.SendAsync(request, cancellationToken);
+		response.EnsureSuccessStatusCode();
+		var content = await response.Content.ReadAsStringAsync(cancellationToken);
 
-			return JsonSerializer.Deserialize<T>(content);
-		}
+		return JsonSerializer.Deserialize<T>(content);
 	}
 }
