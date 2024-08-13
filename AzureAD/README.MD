@@ -57,7 +57,17 @@ dotnet run
 
 #### 4. Access the endpoint
 
-### User Instructions
+With Swagger UI
+http://localhost:5225/swagger/index.html
+
+GET a token from Azure AD
+http://localhost:5225/tokenFromAzure
+
+GET a token from the cache
+http://localhost:5225/tokenFromCache
+
+GET data from an external URL
+http://localhost:5225/data/{url}
 
 
 
