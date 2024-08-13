@@ -12,7 +12,7 @@ This project was used for learning about JWTs, APIs, Polly, C# .NET, Cache and S
 ## Visual Helper
 
 ### Class Diagram
-![Class diagram](ClassDiagram.drawio.svg)
+![Class diagram](ClassDiagram.drawio.svg)![ClassDiagram.drawio.svg](..%2F..%2F..%2F..%2FClassDiagram.drawio.svg)
 
 ### Explanation
 - TokenController contains the API endpoints
